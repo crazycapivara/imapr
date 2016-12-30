@@ -1,0 +1,25 @@
+---
+title: "imapr - An R Interface to IMAP"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(magrittr)
+```
+
+imapr performs IMAP queries via curl.
+
+## Installation
+
+```{r installation, eval=FALSE}
+require("devtools")
+
+install_github("crazycapivara/imapr")
+```
+
+## Usage
+
+```{r introduction, echo=TRUE, eval=TRUE}
+## TODO ##
+```
