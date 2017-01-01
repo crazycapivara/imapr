@@ -5,7 +5,7 @@ Authors@R: person("Stefan", "Kuethe", email = "crazycapivara@gmail.com", role = 
 URL: https://github.com/crazycapivara/imapr/
 Description: Performs IMAP queries via curl.
 Depends:
-    R (>= 3.3.2)
+    R (>= 3.1.2)
 Imports:
     curl,
     magrittr
