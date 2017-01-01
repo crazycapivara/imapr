@@ -15,7 +15,12 @@
 #' }
 execute <- function(imap){
   url <- paste0(imap$url, "/", imap$path)
+  if(!is.null(imap$fetch)){
+    url %<>% paste0(";", imap$fetch)
+  }
   response <- curl::curl_fetch_memory(url, imap$handle)
+  # reset custom request
+  curl::handle_setopt(imap$handle, customrequest = NULL)
   list(
     url = response$url,
     content = rawToChar(response$content),
