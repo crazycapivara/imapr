@@ -55,6 +55,41 @@ response$content %>% cat()
     ## * LIST (\HasNoChildren \Important) "/" "[Gmail]/Wichtig"
 
 ``` r
-#devtools::test()
+imap %>% SELECT("INBOX")
+```
+
+    ## $url
+    ## [1] "imaps://imap.gmail.com"
+    ## 
+    ## $path
+    ## [1] "INBOX"
+    ## 
+    ## $handle
+    ## <curl handle> (empty)
+    ## 
+    ## attr(,"class")
+    ## [1] "imap"
+
+``` r
 ## To be continued ##
 ```
+
+Run tests
+---------
+
+``` r
+devtools::test(reporter = "tap")
+```
+
+    ## Loading imapr
+
+    ## Loading required package: testthat
+
+    ## Testing imapr
+
+    ## 1..3
+    ## # Context imap
+    ## ok 1 init
+    ## ok 2 init
+    ## # Context SELECT
+    ## ok 3 escape mailbox name with brackets

@@ -38,6 +38,12 @@ response <- imap %>% LIST() %>% execute()
 ```{r response-list, echo=TRUE, eval=TRUE}
 response$content %>% cat()
 
-#devtools::test()
+imap %>% SELECT("INBOX")
 ## To be continued ##
+```
+
+## Run tests
+
+```{r tests, echo=TRUE, eval=TRUE}
+devtools::test(reporter = "tap")
 ```
