@@ -2,7 +2,7 @@ context("SELECT")
 
 imap <- IMAP("imaps://imap.gmail.com")
 
-test_that("mailbox", {
+test_that("escape mailbox name with brackets", {
   # when
   mailbox <- "[Gmail]/Gesendet"
   imap %<>% SELECT(mailbox)
