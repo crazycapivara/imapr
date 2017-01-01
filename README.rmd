@@ -5,7 +5,9 @@ output: github_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-library(magrittr)
+#library(magrittr)
+devtools::load_all()
+response <- readRDS("tmp/data/response-list.rds")
 ```
 
 imapr performs IMAP queries via curl.
@@ -21,5 +23,21 @@ install_github("crazycapivara/imapr")
 ## Usage
 
 ```{r introduction, echo=TRUE, eval=TRUE}
-## TODO ##
+library(imapr)
+
+host <- "imaps://imap.gmail.com"
+
+imap <- IMAP(host) %>% user("your_username", "your_password")
+imap
+```
+
+```{r cmd-list, echo=TRUE, eval=FALSE}
+response <- imap %>% LIST() %>% execute()
+```
+
+```{r response-list, echo=TRUE, eval=TRUE}
+response$content %>% cat()
+
+#devtools::test()
+## To be continued ##
 ```
