@@ -3,6 +3,7 @@
 export("%>%")
 export(IMAP)
 export(LIST)
+export(SEARCH)
 export(SELECT)
 export(execute)
 export(user)
