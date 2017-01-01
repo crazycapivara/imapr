@@ -36,6 +36,8 @@ imap
     ## attr(,"class")
     ## [1] "imap"
 
+### List and select mailboxes
+
 ``` r
 response <- imap %>% LIST() %>% execute()
 ```
@@ -69,6 +71,25 @@ imap %>% SELECT("INBOX")
     ## 
     ## attr(,"class")
     ## [1] "imap"
+
+### Search for messages
+
+``` r
+search_all <- imap %>% SELECT("INBOX")
+   %>% SEARCH("ALL") %>% execute() 
+```
+
+``` r
+search_all$url
+```
+
+    ## [1] "imaps://imap.gmail.com/INBOX"
+
+``` r
+search_all$content %>% substr(1, 20)
+```
+
+    ## [1] "* SEARCH 1 2 3 4 5 6"
 
 ``` r
 ## To be continued ##

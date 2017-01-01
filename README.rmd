@@ -8,6 +8,7 @@ knitr::opts_chunk$set(echo = TRUE)
 #library(magrittr)
 devtools::load_all()
 response <- readRDS("tmp/data/response-list.rds")
+search_all <- readRDS("tmp/data/response-search_all.rds")
 ```
 
 imapr performs IMAP queries via curl.
@@ -31,6 +32,8 @@ imap <- IMAP(host) %>% user("your_username", "your_password")
 imap
 ```
 
+### List and select mailboxes
+
 ```{r cmd-list, echo=TRUE, eval=FALSE}
 response <- imap %>% LIST() %>% execute()
 ```
@@ -39,6 +42,18 @@ response <- imap %>% LIST() %>% execute()
 response$content %>% cat()
 
 imap %>% SELECT("INBOX")
+```
+
+### Search for messages
+
+```{r cmd-search, echo=TRUE, eval=FALSE}
+search_all <- imap %>% SELECT("INBOX")
+   %>% SEARCH("ALL") %>% execute() 
+```
+
+```{r response-search, echo=TRUE, eval=TRUE}
+search_all$url
+search_all$content %>% substr(1, 20)
 ## To be continued ##
 ```
 
