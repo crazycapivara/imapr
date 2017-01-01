@@ -2,6 +2,7 @@
 
 export("%>%")
 export(IMAP)
+export(LIST)
 export(execute)
 export(user)
 importFrom(magrittr,"%<>%")
