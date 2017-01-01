@@ -1,6 +1,6 @@
-IMAP <- function(url, path = ""){
+IMAP <- function(host, path = ""){
   list(
-    url = url,
+    url = host,
     path = path,
     handle = curl::new_handle()
   )
