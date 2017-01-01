@@ -1,11 +1,43 @@
+#' IMAP
+#'
+#' Create an imap object.
+#'
+#' @param host url (and port, if non-standard one)
+#'    of imap server
+#' @param path mailbox name
+#'
+#' @return imap object
+#' @export
+#'
+#' @examples
+#' host <- "imaps://imap.gmail.com:993"
+#' mailbox <- "INBOX"
+#' imap <- IMAP(host, mailbox)
+#'
 IMAP <- function(host, path = ""){
-  list(
+  imap <- list(
     url = host,
     path = path,
     handle = curl::new_handle()
   )
+  class(imap) <- "imap"
+  imap
 }
 
+#' user
+#'
+#' Set username and password needed to log in to imap server.
+#'
+#' @param imap imap object
+#' @param username username
+#' @param password password
+#'
+#' @return updated imap object
+#' @export
+#'
+#' @examples
+#' imap <- IMAP("imaps://imap.gmail.com") %>%
+#'    user("name", "pwd")
 user <- function(imap, username, password){
   curl::handle_setopt(imap$handle, username = username)
   curl::handle_setopt(imap$handle, password = password)
