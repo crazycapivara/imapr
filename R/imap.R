@@ -1,6 +1,11 @@
-IMAP <- function(host){
+escape_url_ <- function(url){
+  curl_escape(url) %>% gsub("%2F", "/", .)
+}
+
+IMAP <- function(url, path = ""){
   list(
-    host = host,
+    url = url,
+    path = path,
     handle = curl::new_handle()
   )
 }
@@ -11,7 +16,21 @@ user <- function(imap, username, password){
   imap
 }
 
+select <- function(imap, folder){
+  imap$path <- curl_escape(folder) %>% gsub("%2F", "/", .)
+  imap
+}
+
+examine <- function(imap, folder){
+  req <- paste("EXAMINE", escape_url_(folder))
+  print(req)
+  curl::handle_setopt(imap$handle, customrequest = req)
+  imap
+}
+
 fetch <- function(imap){
-  response <- curl::curl_fetch_memory(imap$host, imap$handle)
+  url <- paste0(imap$url, "/", imap$path)
+  print(url)
+  response <- curl::curl_fetch_memory(url, imap$handle)
   rawToChar(response$content)
 }
