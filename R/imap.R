@@ -14,11 +14,11 @@
 #' mailbox <- "INBOX"
 #' imap <- IMAP(host, mailbox)
 #'
-IMAP <- function(host, path = ""){
+IMAP <- function(host, path = "", options_ = list()){
   imap <- list(
     url = host,
     path = path,
-    handle = curl::new_handle()
+    options = options_
   )
   class(imap) <- "imap"
   imap
@@ -39,8 +39,8 @@ IMAP <- function(host, path = ""){
 #' imap <- IMAP("imaps://imap.gmail.com") %>%
 #'    user("name", "pwd")
 user <- function(imap, username, password){
-  curl::handle_setopt(imap$handle, username = username)
-  curl::handle_setopt(imap$handle, password = password)
+  imap$options$username = username
+  imap$options$password = password
   imap
 }
 
