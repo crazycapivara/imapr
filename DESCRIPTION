@@ -1,6 +1,6 @@
 Package: imapr
 Title: An R Interface to IMAP
-Version: 0.0.1
+Version: 0.1.0
 Authors@R: person("Stefan", "Kuethe", email = "crazycapivara@gmail.com", role = c("aut", "cre"))
 URL: https://github.com/crazycapivara/imapr/
 Description: Performs IMAP queries via curl.
