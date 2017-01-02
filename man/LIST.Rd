@@ -4,21 +4,24 @@
 \alias{LIST}
 \title{LIST}
 \usage{
-LIST(imap)
+LIST(imap, folder = "")
 }
 \arguments{
 \item{imap}{imap object}
+
+\item{folder}{mailbox name (empty name lists root folder)}
 }
 \value{
 updated imap object
 }
 \description{
-list folders on server
+List folder.
 }
 \examples{
 \dontrun{
-   # when 'imap' is an imap object ...
+   # with 'imap' as an imap object ...
    response <- imap \%>\% LIST() \%>\% execute()
 }
+
 }
 

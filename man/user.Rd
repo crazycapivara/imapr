@@ -22,5 +22,6 @@ Set username and password needed to log in to imap server.
 \examples{
 imap <- IMAP("imaps://imap.gmail.com") \%>\%
    user("name", "pwd")
+
 }
 

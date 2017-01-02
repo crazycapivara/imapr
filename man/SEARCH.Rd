@@ -4,18 +4,19 @@
 \alias{SEARCH}
 \title{SEARCH}
 \usage{
-SEARCH(imap, request = "ALL")
+SEARCH(imap, criteria = "ALL")
 }
 \arguments{
 \item{imap}{imap object}
 
-\item{request}{search request like 'ALL', 'UNSEEN', ...}
+\item{criteria}{search criteria like 'ALL', 'UNSEEN', 'FROM "stefan"'
+et cetera}
 }
 \value{
 updated imap object
 }
 \description{
-Search mailbox for messages matching request.
+Search mailbox for messages matching criteria.
 }
 \examples{
 \dontrun{

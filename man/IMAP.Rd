@@ -4,7 +4,7 @@
 \alias{IMAP}
 \title{IMAP}
 \usage{
-IMAP(host, path = "")
+IMAP(host, path = "", options_ = list())
 }
 \arguments{
 \item{host}{url (and port, if non-standard one)
