@@ -38,16 +38,12 @@ IMAP <- function(host, path = "", options_ = list()){
 #' @examples
 #' imap <- IMAP("imaps://imap.gmail.com") %>%
 #'    user("name", "pwd")
+#'
 user <- function(imap, username, password){
   imap$options$username = username
   imap$options$password = password
   imap
 }
-
-#select <- function(imap, folder){
-#  imap$path <- curl_escape(folder) %>% gsub("%2F", "/", .)
-#  imap
-#}
 
 # Problem with mailbox names containing spaces
 examine <- function(imap, folder){
@@ -56,10 +52,3 @@ examine <- function(imap, folder){
   curl::handle_setopt(imap$handle, customrequest = req)
   imap
 }
-
-#fetch <- function(imap){
-#  url <- paste0(imap$url, "/", imap$path)
-#  print(url)
-#  response <- curl::curl_fetch_memory(url, imap$handle)
-#  rawToChar(response$content)
-#}
