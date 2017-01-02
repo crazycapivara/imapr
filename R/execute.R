@@ -1,6 +1,6 @@
 #' execute
 #'
-#' execute request
+#' Execute imap request.
 #'
 #' @param imap imap object
 #'
@@ -13,6 +13,7 @@
 #'    response <- imap %>% LIST() %>% execute()
 #'    cat(response$content)
 #' }
+#'
 execute_obs <- function(imap){
   url <- paste0(imap$url, "/", imap$path)
   if(!is.null(imap$fetch)){

@@ -4,10 +4,11 @@ build_search <- function(){
 
 #' SEARCH
 #'
-#' Search mailbox for messages matching request.
+#' Search mailbox for messages matching criteria.
 #'
 #' @param imap imap object
-#' @param request search request like 'ALL', 'UNSEEN', ...
+#' @param criteria search criteria like 'ALL', 'UNSEEN', 'FROM "stefan"'
+#'    et cetera
 #'
 #' @return updated imap object
 #' @export
@@ -17,13 +18,12 @@ build_search <- function(){
 #'    response <- imap %>%
 #'       SEARCH("UNSEEN") %>% execute()
 #' }
-SEARCH <- function(imap, request = "ALL"){
-  curl::handle_setopt(
-    imap$handle, customrequest = paste("SEARCH", request))
+SEARCH <- function(imap, criteria = "ALL"){
+  imap$options %<>% c(customrequest = paste("SEARCH", criteria))
   imap
 }
 
 SEARCH_FROM <- function(imap, from){
-  request <- sprintf('FROM "%s"', from)
-  SEARCH(imap, request)
+  criteria <- sprintf('FROM "%s"', from)
+  SEARCH(imap, criteria)
 }
