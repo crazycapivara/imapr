@@ -1,9 +1,9 @@
 #' SELECT
 #'
-#' Select mailbox/folder.
+#' Select mailbox.
 #'
 #' @param imap imap object
-#' @param folder mailbox/folder name
+#' @param folder mailbox name
 #'
 #' @return updated imap object
 #' @export

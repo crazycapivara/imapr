@@ -13,7 +13,7 @@
 #'    response <- imap %>% LIST() %>% execute()
 #'    cat(response$content)
 #' }
-execute_ <- function(imap){
+execute_obs <- function(imap){
   url <- paste0(imap$url, "/", imap$path)
   if(!is.null(imap$fetch)){
     url %<>% paste0(";", imap$fetch)
@@ -32,7 +32,7 @@ execute <- function(imap){
   url <- paste0(imap$url, "/", imap$path)
   handle = curl::new_handle()
   curl::handle_setopt(handle, .list = imap$options)
-  response <- curl::curl_fetch_memory(imap$url, handle = handle)
+  response <- curl::curl_fetch_memory(url, handle = handle)
   list(
     url = response$url,
     content = rawToChar(response$content)
