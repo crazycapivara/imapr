@@ -1,17 +1,18 @@
 #' LIST
 #'
-#' list folders on server
+#' List folder.
 #'
 #' @param imap imap object
+#' @param folder mailbox name (empty name lists root folder)
 #'
 #' @return updated imap object
 #' @export
 #'
 #' @examples \dontrun{
-#'    # when 'imap' is an imap object ...
+#'    # with 'imap' as an imap object ...
 #'    response <- imap %>% LIST() %>% execute()
 #' }
-LIST <- function(imap){
-  imap$handle %>% curl::handle_setopt(customrequest = NULL)
-  imap
+#'
+LIST <- function(imap, folder = ""){
+  SELECT(imap, folder)
 }

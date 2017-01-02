@@ -9,16 +9,21 @@ SELECT(imap, folder)
 \arguments{
 \item{imap}{imap object}
 
-\item{folder}{mailbox/folder name}
+\item{folder}{mailbox name}
 }
 \value{
 updated imap object
 }
 \description{
-Select mailbox/folder.
+Select mailbox.
 }
 \examples{
-imap <- IMAP("imaps://imap.gmail.com") \%>\% SELECT("INBOX")
+imap <- IMAP("imaps://imap.gmail.com") \%>\%
+   SELECT("INBOX")
+
+\dontrun{
+   imap \%>\% SEARCH("UNSEEN") \%>\% execute()
+}
 
 }
 
