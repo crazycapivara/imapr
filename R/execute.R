@@ -4,7 +4,8 @@
 #'
 #' @param imap imap object
 #'
-#' @return response (list containing url, content and headers)
+#' @return response (list containing url of request
+#'    and content)
 #' @export
 #'
 #' @examples \dontrun{
@@ -14,21 +15,6 @@
 #'    cat(response$content)
 #' }
 #'
-execute_obs <- function(imap){
-  url <- paste0(imap$url, "/", imap$path)
-  if(!is.null(imap$fetch)){
-    url %<>% paste0(";", imap$fetch)
-  }
-  response <- curl::curl_fetch_memory(url, imap$handle)
-  # reset custom request
-  #curl::handle_setopt(imap$handle, customrequest = NULL, url = NULL)
-  list(
-    url = response$url,
-    content = rawToChar(response$content),
-    headers = rawToChar(response$header)
-  )
-}
-
 execute <- function(imap){
   url <- paste0(imap$url, "/", imap$path)
   handle = curl::new_handle()
