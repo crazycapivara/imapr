@@ -3,9 +3,12 @@
 #' Execute imap request.
 #'
 #' @param imap imap object
+#' @param ... optional parameters passed to curl
+#'    like \code{ssl_verifypeer = F}
+#'    (see \link[curl]{curl_options})
 #'
-#' @return response (list containing url of request
-#'    and content)
+#' @return list containing url of request
+#'    and content
 #' @export
 #'
 #' @examples \dontrun{
@@ -15,7 +18,8 @@
 #'    cat(response$content)
 #' }
 #'
-execute <- function(imap){
+execute <- function(imap, ...){
+  imap$options %<>% c(list(...))
   url <- paste0(imap$url, "/", imap$path)
   handle = curl::new_handle()
   curl::handle_setopt(handle, .list = imap$options)

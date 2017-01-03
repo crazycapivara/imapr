@@ -4,14 +4,18 @@
 \alias{execute}
 \title{execute}
 \usage{
-execute(imap)
+execute(imap, ...)
 }
 \arguments{
 \item{imap}{imap object}
+
+\item{...}{optional parameters passed to curl
+like \code{ssl_verifypeer = F}
+(see \link[curl]{curl_options})}
 }
 \value{
-response (list containing url of request
-   and content)
+list containing url of request
+   and content
 }
 \description{
 Execute imap request.
