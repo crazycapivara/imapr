@@ -14,7 +14,28 @@ FETCH_HEADER <- function(imap, msg_uid){
   imap
 }
 
+#' FETCH
+#'
+#' Fetch message (section) for given id.
+#'
+#' @param imap imap object
+#' @param msg_id message id as returned
+#'    from \link{SEARCH} command
+#' @param section section to fetch\cr
+#'    \code{""} - complete message\cr
+#'    \code{"HEADER"} - header\cr
+#'    \code{"TEXT"} - body\cr
+#'
+#' @return character
+#' @export
+#'
+#' @examples \dontrun{
+#'    imap %>% SELECT("INBOX") %>%
+#'       FETCH(1, "") %>% execute()
+#' }
+#'
+#'
 FETCH <- function(imap, msg_id, section = "HEADER"){
-  imap$path %<>% paste0(";UID=", msg_id)
+  imap$path %<>% paste0(";UID=", msg_id, ";SECTION=", section)
   imap
 }
