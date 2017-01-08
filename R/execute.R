@@ -18,11 +18,15 @@
 #'    cat(response$content)
 #' }
 #'
-execute <- function(imap, ...){
+execute <- function(imap, save = FALSE, ...){
   imap$options %<>% c(list(...))
   url <- paste0(imap$url, "/", imap$path)
   handle = curl::new_handle()
   curl::handle_setopt(handle, .list = imap$options)
+  if(save){
+    filename <- curl::curl_download(url, tempfile(), handle = handle)
+    return(filename)
+  }
   response <- curl::curl_fetch_memory(url, handle = handle)
   list(
     url = response$url,
