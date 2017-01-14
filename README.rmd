@@ -5,13 +5,12 @@ output: github_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-#library(magrittr)
 devtools::load_all()
 response <- readRDS("tmp/data/response-list.rds")
 search_all <- readRDS("tmp/data/response-search_all.rds")
 ```
 
-imapr performs IMAP queries via curl.
+`imapr` performs IMAP queries via curl.
 
 ## Installation
 
@@ -29,7 +28,7 @@ library(imapr)
 host <- "imaps://imap.gmail.com"
 
 imap <- IMAP(host) %>% user("your_username", "your_password")
-imap
+imap[c("url", "path")]
 ```
 
 ### List and select mailboxes
@@ -41,7 +40,7 @@ response <- imap %>% LIST() %>% execute()
 ```{r response-list, echo=TRUE, eval=TRUE}
 response$content %>% cat()
 
-imap %>% SELECT("INBOX")
+imap %>% SELECT("INBOX") %>% .[c("url", "path")]
 ```
 
 ### Search for messages

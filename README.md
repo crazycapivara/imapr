@@ -1,7 +1,7 @@
 imapr - An R Interface to IMAP
 ================
 
-imapr performs IMAP queries via curl.
+`imapr` performs IMAP queries via curl.
 
 Installation
 ------------
@@ -21,7 +21,7 @@ library(imapr)
 host <- "imaps://imap.gmail.com"
 
 imap <- IMAP(host) %>% user("your_username", "your_password")
-imap
+imap[c("url", "path")]
 ```
 
     ## $url
@@ -29,12 +29,6 @@ imap
     ## 
     ## $path
     ## [1] ""
-    ## 
-    ## $handle
-    ## <curl handle> (empty)
-    ## 
-    ## attr(,"class")
-    ## [1] "imap"
 
 ### List and select mailboxes
 
@@ -57,7 +51,7 @@ response$content %>% cat()
     ## * LIST (\HasNoChildren \Important) "/" "[Gmail]/Wichtig"
 
 ``` r
-imap %>% SELECT("INBOX")
+imap %>% SELECT("INBOX") %>% .[c("url", "path")]
 ```
 
     ## $url
@@ -65,12 +59,6 @@ imap %>% SELECT("INBOX")
     ## 
     ## $path
     ## [1] "INBOX"
-    ## 
-    ## $handle
-    ## <curl handle> (empty)
-    ## 
-    ## attr(,"class")
-    ## [1] "imap"
 
 ### Search for messages
 
@@ -108,9 +96,12 @@ devtools::test(reporter = "tap")
 
     ## Testing imapr
 
-    ## 1..3
+    ## 1..5
     ## # Context imap
     ## ok 1 init
     ## ok 2 init
+    ## # Context SEARCH
+    ## ok 3 by flags
+    ## ok 4 by flags
     ## # Context SELECT
-    ## ok 3 escape mailbox name with brackets
+    ## ok 5 escape mailbox name with brackets
