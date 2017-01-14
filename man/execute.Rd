@@ -4,7 +4,7 @@
 \alias{execute}
 \title{execute}
 \usage{
-execute(imap, ...)
+execute(imap, save = FALSE, ...)
 }
 \arguments{
 \item{imap}{imap object}
