@@ -1,5 +1,3 @@
-#' execute
-#'
 #' Execute imap request.
 #'
 #' @param imap imap object
@@ -18,18 +16,21 @@
 #'    cat(response$content)
 #' }
 #'
-execute <- function(imap, save = FALSE, ...){
+execute <- function(imap, filename = NULL, ...){
   imap$options %<>% c(list(...))
   url <- paste0(imap$url, "/", imap$path)
   handle = curl::new_handle()
   curl::handle_setopt(handle, .list = imap$options)
-  if(save){
-    filename <- curl::curl_download(url, tempfile(), handle = handle)
+  if(!is.null(filename)){
+    filename <- curl::curl_download(url, filename, handle = handle)
     return(filename)
   }
   response <- curl::curl_fetch_memory(url, handle = handle)
-  list(
-    url = response$url,
-    content = rawToChar(response$content)
-  )
+  #list(
+  #  url = response$url,
+  #  content = rawToChar(response$content)
+  #)
+  data <- rawToChar(response$content)
+  attr(data, "url") <- response$url
+  data
 }
