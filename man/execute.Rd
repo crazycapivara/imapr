@@ -9,13 +9,15 @@ execute(imap, filename = NULL, ...)
 \arguments{
 \item{imap}{imap object}
 
+\item{filename}{if given, response will be written to disk}
+
 \item{...}{optional parameters passed to curl
-like \code{ssl_verifypeer = F}
-(see \link[curl]{curl_options})}
+like \code{ssl_verifypeer = FALSE}
+(see code{\link[curl]{curl_options}})}
 }
 \value{
 list containing url of request
-   and content
+   and content OR filename
 }
 \description{
 Execute imap request.
