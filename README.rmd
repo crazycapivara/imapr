@@ -12,6 +12,17 @@ search_all <- readRDS("tmp/data/response-search_all.rds")
 
 `imapr` performs IMAP queries via curl.
 
+## Builds
+
+__master__
+
+[![Travis-CI Build Status](https://travis-ci.org/crazycapivara/imapr.svg?branch=master)](https://travis-ci.org/crazycapivara/imapr)
+
+__develop__
+
+[![Travis-CI Build Status](https://travis-ci.org/crazycapivara/imapr.svg?branch=develop)](https://travis-ci.org/crazycapivara/imapr)
+
+
 ## Installation
 
 ```{r installation, eval=FALSE}
@@ -38,7 +49,7 @@ response <- imap %>% LIST() %>% execute()
 ```
 
 ```{r response-list, echo=TRUE, eval=TRUE}
-response$content %>% cat()
+response %>% cat()
 
 imap %>% SELECT("INBOX") %>% .[c("url", "path")]
 ```
@@ -51,8 +62,8 @@ search_all <- imap %>% SELECT("INBOX")
 ```
 
 ```{r response-search, echo=TRUE, eval=TRUE}
-search_all$url
-search_all$content %>% substr(1, 20)
+#search_all$url
+search_all %>% substr(1, 20)
 ## To be continued ##
 ```
 

@@ -3,6 +3,17 @@ imapr - An R Interface to IMAP
 
 `imapr` performs IMAP queries via curl.
 
+Builds
+------
+
+**master**
+
+[![Travis-CI Build Status](https://travis-ci.org/crazycapivara/imapr.svg?branch=master)](https://travis-ci.org/crazycapivara/imapr)
+
+**develop**
+
+[![Travis-CI Build Status](https://travis-ci.org/crazycapivara/imapr.svg?branch=develop)](https://travis-ci.org/crazycapivara/imapr)
+
 Installation
 ------------
 
@@ -37,7 +48,7 @@ response <- imap %>% LIST() %>% execute()
 ```
 
 ``` r
-response$content %>% cat()
+response %>% cat()
 ```
 
     ## * LIST (\HasNoChildren) "/" "INBOX"
@@ -68,16 +79,13 @@ search_all <- imap %>% SELECT("INBOX")
 ```
 
 ``` r
-search_all$url
-```
-
-    ## [1] "imaps://imap.gmail.com/INBOX"
-
-``` r
-search_all$content %>% substr(1, 20)
+#search_all$url
+search_all %>% substr(1, 20)
 ```
 
     ## [1] "* SEARCH 1 2 3 4 5 6"
+    ## attr(,"url")
+    ## [1] "imaps://imap.gmail.com/INBOX"
 
 ``` r
 ## To be continued ##
