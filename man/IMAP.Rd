@@ -11,6 +11,8 @@ IMAP(host, path = "", options_ = list())
 of imap server}
 
 \item{path}{mailbox name}
+
+\item{options_}{curl options passed to handle}
 }
 \value{
 imap object

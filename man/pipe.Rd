@@ -5,6 +5,6 @@
 \alias{pipe}
 \title{Pipe operator.}
 \description{
-Exported from \code{\pkg{magrittr}}.
+Exported from \pkg{magrittr}.
 }
 

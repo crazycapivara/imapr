@@ -5,6 +5,7 @@
 #' @param host url (and port, if non-standard one)
 #'    of imap server
 #' @param path mailbox name
+#' @param options_ curl options passed to handle
 #'
 #' @return imap object
 #' @export
