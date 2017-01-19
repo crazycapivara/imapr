@@ -11,7 +11,7 @@ NULL
 
 #' Pipe operator.
 #'
-#' Exported from \code{\pkg{magrittr}}.
+#' Exported from \pkg{magrittr}.
 #'
 #' @aliases %>%
 #' @name pipe

@@ -1,12 +1,13 @@
 #' Execute imap request.
 #'
 #' @param imap imap object
+#' @param filename if given, response will be written to disk
 #' @param ... optional parameters passed to curl
-#'    like \code{ssl_verifypeer = F}
-#'    (see \link[curl]{curl_options})
+#'    like \code{ssl_verifypeer = FALSE}
+#'    (see code{\link[curl]{curl_options}})
 #'
 #' @return list containing url of request
-#'    and content
+#'    and content OR filename
 #' @export
 #'
 #' @examples \dontrun{
