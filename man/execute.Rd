@@ -2,9 +2,9 @@
 % Please edit documentation in R/execute.R
 \name{execute}
 \alias{execute}
-\title{execute}
+\title{Execute imap request.}
 \usage{
-execute(imap, save = FALSE, ...)
+execute(imap, filename = NULL, ...)
 }
 \arguments{
 \item{imap}{imap object}
