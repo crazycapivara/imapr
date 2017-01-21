@@ -3,7 +3,7 @@ set_options <- function(imap, ...){
 }
 
 exec_python <- function(argv){
-  cmd <- get_python()
+  cmd <- get_python_cmd()
   system2(cmd, argv, stdout = TRUE) %>%
     jsonlite::fromJSON()
 }
