@@ -1,4 +1,4 @@
-#' Parser email header.
+#' Parse email header.
 #'
 #' Parses email header using python.
 #'
