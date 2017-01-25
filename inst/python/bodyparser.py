@@ -2,28 +2,34 @@ import sys
 import json
 from email import message_from_file
 
+def read_msg(filename):
+  with open(filename) as fp:
+    msg = message_from_file(fp)
+  return(msg)
+
+def _get_payload(part):
+  charset = part.get_content_charset()
+  return part.get_payload(decode = True).decode(charset)
+
 def walk(msg):
   data = {"plain": "", "html": ""}
   for part in msg.walk():
     content_type = part.get_content_type()
-    #print(content_type)
-    charset = part.get_content_charset()
-    #print(charset)
     if content_type == "text/plain":
-      data["plain"] = part.get_payload(decode = True).decode(charset)
+      data["plain"] += _get_payload(part)
     elif content_type == "text/html":
-      data["html"] = part.get_payload(decode = True).decode(charset)
+      data["html"] += _get_payload(part)
   return data
 
-def parse(filename):
-  with open(filename) as fp:
-    msg = message_from_file(fp)
+def parse(msg):
   if msg.is_multipart():
     data = walk(msg)
   else:
-    data = {"plain": "Hi folks!"}
+    #data = {"plain": "Hi folks!"}
+    data = _get_payload(msg)
   return(data)
 
 if __name__ == "__main__":
-  data = parse(sys.argv[1])
+  msg = read_msg(sys.argv[1])
+  data = parse(msg)
   print(json.dumps(data, ensure_ascii = False))
