@@ -4,7 +4,10 @@
 \alias{sections}
 \title{List section options.}
 \usage{
-sections()
+sections(select = NULL)
+}
+\arguments{
+\item{select}{section to be returned}
 }
 \value{
 list of section options
@@ -13,7 +16,12 @@ list of section options
 List section options.
 }
 \examples{
-sections()$header_min
+# show options
+sections()
+
+select 'header_min'
+sections(header_min)
+
 }
 \seealso{
 \code{\link{FETCH}}
