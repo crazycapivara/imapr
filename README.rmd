@@ -8,6 +8,9 @@ knitr::opts_chunk$set(echo = TRUE)
 devtools::load_all()
 response <- readRDS("tmp/data/response-list.rds")
 search_all <- readRDS("tmp/data/response-search_all.rds")
+header <- readRDS("tmp/data/response-fetch_92.rds") %>% 
+  sub("crazycapivara@gmail.com", "coughing@cohen.salut", .) %>%
+  sub("@travis-ci.org", "@stuff.hi", .)
 ```
 
 `imapr` performs IMAP queries via curl.
@@ -62,8 +65,18 @@ search_all <- imap %>% SELECT("INBOX")
 ```
 
 ```{r response-search, echo=TRUE, eval=TRUE}
-#search_all$url
 search_all %>% substr(1, 20)
+```
+
+## Fetch messages
+
+```{r cmd-fetch, echo=TRUE, eval=FALSE}
+header <- imap %>% SELECT("INBOX") %>%
+  FETCH(1, sections("header_min")) %>% execute()
+```
+
+```{r response-fetch, echo=TRUE, eval=TRUE}
+header %>% cat()
 ## To be continued ##
 ```
 

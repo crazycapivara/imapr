@@ -79,13 +79,30 @@ search_all <- imap %>% SELECT("INBOX")
 ```
 
 ``` r
-#search_all$url
 search_all %>% substr(1, 20)
 ```
 
     ## [1] "* SEARCH 1 2 3 4 5 6"
     ## attr(,"url")
     ## [1] "imaps://imap.gmail.com/INBOX"
+
+Fetch messages
+--------------
+
+``` r
+header <- imap %>% SELECT("INBOX") %>%
+  FETCH(1, sections("header_min")) %>% execute()
+```
+
+``` r
+header %>% cat()
+```
+
+    ## From: Travis CI <builds@stuff.hi>
+    ## Subject: Failed: crazycapivara/owmr#35 (bleeding-edge - fd15c7d)
+    ## To: <coughing@cohen.salut>
+    ## Date: Sat, 17 Dec 2016 14:39:40 +0000
+    ## 
 
 ``` r
 ## To be continued ##
