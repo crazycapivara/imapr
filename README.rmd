@@ -68,7 +68,7 @@ search_all <- imap %>% SELECT("INBOX")
 search_all %>% substr(1, 20)
 ```
 
-## Fetch messages
+### Fetch messages
 
 ```{r cmd-fetch, echo=TRUE, eval=FALSE}
 header <- imap %>% SELECT("INBOX") %>%

@@ -86,8 +86,7 @@ search_all %>% substr(1, 20)
     ## attr(,"url")
     ## [1] "imaps://imap.gmail.com/INBOX"
 
-Fetch messages
---------------
+### Fetch messages
 
 ``` r
 header <- imap %>% SELECT("INBOX") %>%
