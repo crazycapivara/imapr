@@ -13,4 +13,10 @@ fetch_sample_data <- function(username, password){
 
   imap %>% SELECT("INBOX") %>% SEARCH("ALL") %>%
     execute() %>% save_response("tmp/data/response-search_all.rds")
+
+  imap %>% SELECT("INBOX") %>% SEARCH("FROM Travis") %>%
+    execute() %>% save_response("tmp/data/response-search_travis.rds")
+
+  imap %>% SELECT("INBOX") %>% FETCH(92) %>%
+    execute() %>% save_response("tmp/data/response-fetch_92.rds")
 }
