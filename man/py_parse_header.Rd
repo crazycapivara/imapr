@@ -2,7 +2,7 @@
 % Please edit documentation in R/py-parse.R
 \name{py_parse_header}
 \alias{py_parse_header}
-\title{Parser email header.}
+\title{Parse email header.}
 \usage{
 py_parse_header(filename)
 }
