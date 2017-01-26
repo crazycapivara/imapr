@@ -11,7 +11,7 @@
 #' # show sections
 #' sections()
 #'
-#' select section
+#' # select section
 #' sections("header_min")
 #'
 sections <- function(select = NULL){

@@ -19,7 +19,7 @@ List section options.
 # show sections
 sections()
 
-select section
+# select section
 sections("header_min")
 
 }
