@@ -8,11 +8,11 @@
 #' @seealso \code{\link{FETCH}}
 #'
 #' @examples
-#' # show options
+#' # show sections
 #' sections()
 #'
-#' select 'header_min'
-#' sections(header_min)
+#' select section
+#' sections("header_min")
 #'
 sections <- function(select = NULL){
   sections_ <- list(

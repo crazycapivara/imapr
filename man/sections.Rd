@@ -16,11 +16,11 @@ list of section options
 List section options.
 }
 \examples{
-# show options
+# show sections
 sections()
 
-select 'header_min'
-sections(header_min)
+select section
+sections("header_min")
 
 }
 \seealso{
