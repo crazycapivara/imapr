@@ -1,4 +1,4 @@
-# REMOVE!?
+# TODO: implement or delete!
 set_options <- function(imap, ...){
   cat("NOT implemented yet!")
 }

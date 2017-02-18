@@ -11,13 +11,11 @@ execute(imap, filename = NULL, ...)
 
 \item{filename}{if given, response will be written to disk}
 
-\item{...}{optional parameters passed to curl
-like \code{ssl_verifypeer = FALSE}
-(see code{\link[curl]{curl_options}})}
+\item{...}{optional parameters passed to curl,
+see \code{\link[curl]{curl_options}}}
 }
 \value{
-list containing url of request
-   and content OR filename
+content OR filename
 }
 \description{
 Execute imap request.
@@ -26,8 +24,14 @@ Execute imap request.
 \dontrun{
    imap <- IMAP("imaps://imap.gmail.com") \%>\%
       user("name", "pwd")
-   response <- imap \%>\% LIST() \%>\% execute()
-   cat(response$content)
+
+   imap \%>\% LIST() \%>\% execute() \%>\% cat()
+
+   filename <- imap \%>\% SELECT("INBOX") \%>\%
+      FETCH(1) \%>\% execute(tempfile())
+
+   imap \%>\% LIST("INBOX") \%>\%
+      execute(ssl_verifypeer = FALSE)
 }
 
 }

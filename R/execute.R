@@ -2,19 +2,23 @@
 #'
 #' @param imap imap object
 #' @param filename if given, response will be written to disk
-#' @param ... optional parameters passed to curl
-#'    like \code{ssl_verifypeer = FALSE}
-#'    (see code{\link[curl]{curl_options}})
+#' @param ... optional parameters passed to curl,
+#'  see \code{\link[curl]{curl_options}}
 #'
-#' @return list containing url of request
-#'    and content OR filename
+#' @return content OR filename
 #' @export
 #'
 #' @examples \dontrun{
 #'    imap <- IMAP("imaps://imap.gmail.com") %>%
 #'       user("name", "pwd")
-#'    response <- imap %>% LIST() %>% execute()
-#'    cat(response$content)
+#'
+#'    imap %>% LIST() %>% execute() %>% cat()
+#'
+#'    filename <- imap %>% SELECT("INBOX") %>%
+#'       FETCH(1) %>% execute(tempfile())
+#'
+#'    imap %>% LIST("INBOX") %>%
+#'       execute(ssl_verifypeer = FALSE)
 #' }
 #'
 execute <- function(imap, filename = NULL, ...){
@@ -27,10 +31,6 @@ execute <- function(imap, filename = NULL, ...){
     return(filename)
   }
   response <- curl::curl_fetch_memory(url, handle = handle)
-  #list(
-  #  url = response$url,
-  #  content = rawToChar(response$content)
-  #)
   data <- rawToChar(response$content)
   attr(data, "url") <- response$url
   data
