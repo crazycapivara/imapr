@@ -1,14 +1,14 @@
-#' List section options.
+#' List message sections.
 #'
-#' @param select section to be returned
+#' @param select only return selected section
 #'
-#' @return list of section options
+#' @return list of all sections OR selected section
 #' @export
 #'
 #' @seealso \code{\link{FETCH}}
 #'
 #' @examples
-#' # show sections
+#' # show all (available) sections
 #' sections()
 #'
 #' # select section

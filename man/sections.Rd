@@ -2,21 +2,21 @@
 % Please edit documentation in R/section.R
 \name{sections}
 \alias{sections}
-\title{List section options.}
+\title{List message sections.}
 \usage{
 sections(select = NULL)
 }
 \arguments{
-\item{select}{section to be returned}
+\item{select}{only return selected section}
 }
 \value{
-list of section options
+list of all sections OR selected section
 }
 \description{
-List section options.
+List message sections.
 }
 \examples{
-# show sections
+# show all (available) sections
 sections()
 
 # select section
