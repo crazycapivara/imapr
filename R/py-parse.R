@@ -20,6 +20,8 @@ py_parse_header <- function(filename){
   #  exec_python_script(c(filename, "--header"))
 }
 
+### TODO: add parameter to delete filename if wanted
+###       export func
 py_parse <- function(filename, argv = NULL){
   get_python_script_name("parser.py") %>%
     exec_python_script(c(filename, argv))
